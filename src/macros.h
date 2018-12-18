@@ -26,10 +26,10 @@
 #define CMD_UNSET 							0x08
 #define CMD_PRINT_HELP 						0x09
 
-#define STATUS_RUNNING 						0x00
-#define STATUS_DONE 						0x01
-#define STATUS_SUSPENDED 					0x02
-#define STATUS_CONTINUED 					0x03
-#define STATUS_TERMINATED 					0x04
+#define STATUS_RUNNING 						0
+#define STATUS_DONE 						1
+#define STATUS_SUSPENDED 					2
+#define STATUS_CONTINUED 					3
+#define STATUS_TERMINATED 					4
 
 #endif
