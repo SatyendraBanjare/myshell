@@ -18,7 +18,7 @@
 
 struct process {
     char *command;
-    int commnd_count;
+    int command_count;
     char **command_list;
     char *input_path;
     char *output_path;
@@ -29,14 +29,16 @@ struct process {
 };
 
 struct job {
-    // parent process
-    struct process *parent;
+    // first process
+    struct process *root;
 
     int job_id;
     char *command;
     pid_t pgid;
     int job_mode;
 };
+
+// A job is a collection of multiple process linked together.
 
 struct context_data {
     char cur_user[TOKEN_BUFSIZE];
@@ -50,5 +52,6 @@ int get_command_type(char *command);
 char* trimmer(char* line);
 char* read_input() ;
 void display_help();
+int exit_shell();
 
 #endif
