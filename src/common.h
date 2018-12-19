@@ -41,12 +41,11 @@ struct job {
 struct context_data {
     char cur_user[TOKEN_BUFSIZE];
     char cur_dir[PATH_BUFSIZE];
-    char pw_dir[PATH_BUFSIZE];
     struct job *jobs[MAX_JOBS + 1];
 };
 
 int show_job_process(int job_id, struct context_data *context);
-int show_job_status(int job_id,struct context_data *shell);
+int show_job_status(int job_id,struct context_data *context);
 int get_command_type(char *command);
 char* trimmer(char* line);
 char* read_input() ;

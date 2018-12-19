@@ -8,6 +8,7 @@
 
 #define PATH_BUFSIZE 						1024
 #define CMD_BUFSIZE 						1024
+#define PROMPT_BUFSIZE                      4096
 #define TOKEN_BUFSIZE 						64
 #define TOKEN_DELIMITERS 					" "
 

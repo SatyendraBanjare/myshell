@@ -1,11 +1,11 @@
 #include "common.h"
 
 const char* STATUS_STRING[] = {
-    "running",
-    "done",
-    "suspended",
-    "continued",
-    "terminated"
+    "Job Running",
+    "Job Done",
+    "Job Suspended",
+    "Job Continued",
+    "job Terminated"
 };
 
 int show_job_process(int job_id, struct context_data *context) {
@@ -91,6 +91,12 @@ void completion(const char *buf, linenoiseCompletions *lc) {
         linenoiseAddCompletion(lc,"ls");
         linenoiseAddCompletion(lc,"locate");   
     }
+    if(buf[0] == 'e'){
+        linenoiseAddCompletion(lc,"exit");   
+    }
+    if(buf[0] == 'k'){
+        linenoiseAddCompletion(lc,"kill");   
+    }
 }
 
 char *hints(const char *buf, int *color, int *bold) {
@@ -108,14 +114,17 @@ char *hints(const char *buf, int *color, int *bold) {
     return NULL;
 }
 
-char* read_input(char * username ) {
+char* read_input(struct context_data* context ) {
+
+    char prompt[PROMPT_BUFSIZE] = {0};
+    snprintf(prompt,sizeof(prompt),"%s @ %s -$", context->cur_user,context->cur_dir );
 
     linenoiseSetCompletionCallback(completion);
     linenoiseSetHintsCallback(hints);
     linenoiseHistoryLoad("history.txt");
 
 
-    char* line = linenoise("MyShell> ");
+    char* line = linenoise(prompt);
     linenoiseHistoryAdd(line); /* Add to the history. */
     linenoiseHistorySave("history.txt"); /* Save the history on disk. */
 
