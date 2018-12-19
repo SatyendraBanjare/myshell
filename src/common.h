@@ -28,18 +28,18 @@ struct process {
     struct process *next;
 };
 
+// A job is a collection of multiple process linked together.
 struct job {
     // first process
     struct process *root;
 
-    int job_id;
-    char *command;
-    pid_t pgid;
-    int job_mode;
+    int id;          // The Job ID.
+    char *command;   // Command for the particular Job. 
+    pid_t pgid;      // The Process Group ID
+    int mode;    // The job mode either FG, BG or Pipe
 };
 
-// A job is a collection of multiple process linked together.
-
+// The current context data.
 struct context_data {
     char cur_user[TOKEN_BUFSIZE];
     char cur_dir[PATH_BUFSIZE];

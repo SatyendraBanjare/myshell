@@ -22,7 +22,7 @@ int show_job_process(int job_id, struct context_data *context) {
 int show_job_status(int job_id, struct context_data *context) {
 
     struct process *proc;
-    for (proc = context->jobs[id]->root; proc != NULL; proc = proc->next) {
+    for (proc = context->jobs[job_id]->root; proc != NULL; proc = proc->next) {
         printf("[%d]\t%d\t%s\t%s", job_id, proc->pid,
             STATUS_STRING[proc->status], proc->command);
         if (proc->next != NULL) {
